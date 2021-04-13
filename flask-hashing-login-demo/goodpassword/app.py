@@ -32,10 +32,16 @@ def register():
     form = RegisterForm()
 
     if form.validate_on_submit():
+        #added these two
+        fname = form.fname.data
+        lname = form.lname.data
+        
         email = form.email.data
         pwd = form.password.data
 
-        user = User.register(email, pwd)
+        # Changed this
+        user = User.register(fname, lname, email, pwd)
+
         db.session.add(user)
         db.session.commit()
 
